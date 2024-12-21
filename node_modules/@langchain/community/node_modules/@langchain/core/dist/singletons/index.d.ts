@@ -1,0 +1,16 @@
+export interface AsyncLocalStorageInterface {
+    getStore: () => any | undefined;
+    run: <T>(store: any, callback: () => T) => T;
+}
+export declare class MockAsyncLocalStorage implements AsyncLocalStorageInterface {
+    getStore(): any;
+    run<T>(_store: any, callback: () => T): T;
+}
+declare class AsyncLocalStorageProvider {
+    private asyncLocalStorage;
+    private hasBeenInitialized;
+    getInstance(): AsyncLocalStorageInterface;
+    initializeGlobalInstance(instance: AsyncLocalStorageInterface): void;
+}
+declare const AsyncLocalStorageProviderSingleton: AsyncLocalStorageProvider;
+export { AsyncLocalStorageProviderSingleton };
